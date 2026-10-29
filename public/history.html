@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>StorageMaster – historia zdarzeń</title>
+  <link rel="icon" href="camaco_logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <span class="logo" role="img" aria-label="CAMACO"></span>
+    <h1>Historia zdarzeń</h1>
+    <div class="conn" id="conn" role="status">Łączenie…</div>
+    <div class="clock" id="clock"></div>
+  </header>
+
+  <main>
+    <div class="filters">
+      <label>Pokaż:
+        <select id="filter">
+          <option value="all">wszystko</option>
+          <option value="sensor">odczyty czujników</option>
+          <option value="alert">alerty</option>
+          <option value="device">połączenie urządzenia</option>
+        </select>
+      </label>
+    </div>
+    <ul class="history history-full" id="history"></ul>
+  </main>
+
+  <script src="history.js"></script>
+</body>
+</html>

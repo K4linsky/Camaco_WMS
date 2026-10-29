@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# build artifacts
+dist/
+build/
+bin/
+obj/
+__pycache__/
+*.pyc
+.vs/
+.idea/
+.vscode/
+
+# secrets
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+secrets.h
+
+# logs and local data
+*.log
+data/*.jsonl
+*.db
+*.sqlite
+*.sqlite3
+.DS_Store
+Thumbs.db

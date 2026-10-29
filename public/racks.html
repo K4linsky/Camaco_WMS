@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>StorageMaster – edycja regałów</title>
+  <link rel="icon" href="camaco_logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <span class="logo" role="img" aria-label="CAMACO"></span>
+    <h1>Edycja regałów</h1>
+    <div class="conn" id="conn" role="status">Łączenie…</div>
+    <div class="clock" id="clock"></div>
+  </header>
+
+  <main>
+      <form class="addrack" id="addrack">
+        <input id="newrack-label" type="text" maxlength="80" placeholder="Etykieta nowego regału" aria-label="Etykieta nowego regału" required>
+        <input id="newrack-shelves" type="number" min="0" max="50" value="4" aria-label="Liczba półek" title="Liczba półek">
+        <input id="newrack-boxes" type="number" min="0" max="50" value="4" aria-label="Liczba boxów na półce" title="Boxów na półce">
+        <button type="submit" class="btn primary">+ Dodaj regał</button>
+      </form>
+      <div class="error" id="rack-error" role="alert" hidden></div>
+    <div class="error" id="rack-error" role="alert" hidden></div>
+    <div class="racks" id="racks"></div>
+  </main>
+
+  <script src="racks.js"></script>
+</body>
+</html>

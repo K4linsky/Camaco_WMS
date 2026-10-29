@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>StorageMaster – panel magazyniera</title>
+  <link rel="icon" href="camaco_logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <span class="logo" role="img" aria-label="CAMACO"></span>
+    <h1>StorageMaster</h1>
+    <div class="conn" id="conn" role="status">Łączenie…</div>
+    <a class="btn hist-link" href="racks.html" target="_blank" rel="noopener">Edytuj Regały</a>
+    <a class="btn hist-link" href="history.html" target="_blank" rel="noopener">Historia zdarzeń</a>
+    <div class="clock" id="clock"></div>
+  </header>
+
+  <main>
+    <section id="alerts" aria-live="polite"></section>
+
+    <section>
+      <h2>Regały <span class="summary" id="rack-summary"></span></h2>
+      <div class="racks" id="racks"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

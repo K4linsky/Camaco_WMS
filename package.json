@@ -1,0 +1,14 @@
+{
+  "name": "storagemaster",
+  "version": "1.0.0",
+  "description": "Panel magazyniera StorageWMS: odczyty czujnikow E18-D80NK przez MQTT na zywo",
+  "private": true,
+  "type": "commonjs",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node src/server.js",
+    "simulator": "node simulator/simulator.js",
+    "demo": "node simulator/demo.js",
+    "test": "node --test test/*.test.js"
+  }
+}

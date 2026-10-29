@@ -1,0 +1,16 @@
+services:
+  storagemaster:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"   # panel: http://localhost:3000
+      - "1883:1883"   # MQTT - tu laczy sie ESP32 (MQTT_HOST w secrets.h = IP komputera z Dockerem)
+    environment:
+      ALERT_OCCUPIED_SEC: ${ALERT_OCCUPIED_SEC:-3600}
+      SENSOR_NAMES: ${SENSOR_NAMES:-Miejsce 1,Miejsce 2,Miejsce 3}
+      SIMULATOR: ${SIMULATOR:-0}   # SIMULATOR=1 -> symulator czujnikow (demo bez sprzetu)
+    volumes:
+      - app-data:/app/data
+
+volumes:
+  app-data:
