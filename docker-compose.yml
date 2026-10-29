@@ -1,11 +1,14 @@
 services:
   storagemaster:
-    build: .
+    image: ghcr.io/k4linsky/camaco_wms:latest   # gotowy obraz multi-arch (amd64/arm64) budowany przez GitHub Actions
+    build: .                                     # fallback: docker compose up -d --build
     restart: unless-stopped
     ports:
       - "3000:3000"   # panel: http://localhost:3000
       - "1883:1883"   # MQTT - tu laczy sie ESP32 (MQTT_HOST w secrets.h = IP komputera z Dockerem)
     environment:
+      MQTT_USER: ${MQTT_USER:?ustaw MQTT_USER w pliku .env}
+      MQTT_PASSWORD: ${MQTT_PASSWORD:?ustaw MQTT_PASSWORD w pliku .env}
       ALERT_OCCUPIED_SEC: ${ALERT_OCCUPIED_SEC:-3600}
       SENSOR_NAMES: ${SENSOR_NAMES:-Miejsce 1,Miejsce 2,Miejsce 3}
       SIMULATOR: ${SIMULATOR:-0}   # SIMULATOR=1 -> symulator czujnikow (demo bez sprzetu)
