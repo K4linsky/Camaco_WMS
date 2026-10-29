@@ -28,3 +28,4 @@ data/*.jsonl
 *.sqlite3
 .DS_Store
 Thumbs.db
+!.env.example
