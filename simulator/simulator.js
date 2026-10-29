@@ -19,6 +19,8 @@ const client = new MqttClient({
   host: process.env.MQTT_HOST || '127.0.0.1',
   port: Number(process.env.MQTT_PORT) || 1883,
   clientId: 'storagewms-1',
+  username: process.env.MQTT_USER || undefined,
+  password: process.env.MQTT_PASSWORD || undefined,
   will: { topic: STATUS, payload: 'offline', retain: true },
   reconnectMs: 8000 / speed,
 });

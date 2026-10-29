@@ -3,6 +3,12 @@
 # Gdy dowolny proces padnie, kontener konczy prace i Docker restartuje calosc.
 mkdir -p /app/data/mosquitto
 
+# Broker wymaga logowania. Plik hasel jest generowany przy kazdym starcie z MQTT_USER / MQTT_PASSWORD.
+if [ -z "$MQTT_USER" ] || [ -z "$MQTT_PASSWORD" ]; then
+  echo "Brak MQTT_USER lub MQTT_PASSWORD - ustaw je w pliku .env (patrz .env.example)"; exit 1
+fi
+mosquitto_passwd -b -c /app/data/mosquitto/passwd "$MQTT_USER" "$MQTT_PASSWORD" || exit 1
+
 mosquitto -c /app/docker/mosquitto.conf &
 MOSQ=$!
 

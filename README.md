@@ -101,3 +101,22 @@ Konfiguracja w `data/racks.json` (`RACKS_FILE`). Czujniki z MQTT pojawiają się
 - `POST /api/racks/:id/shelves/:sid/boxes` `{product?, sensor?}` · `PUT|DELETE .../boxes/:bid` (`sensor`: `"1:2"` lub `null`)
 
 Zmiany są rozsyłane na żywo przez `/api/stream` (pole `racks`). Panel bez logowania (sieć lokalna).
+
+## Wdrożenie w Dockerze
+
+Na docelowej maszynie wystarczy Docker (amd64 lub arm64, np. Raspberry Pi 4/5).
+
+```
+cp .env.example .env     # ustaw MQTT_USER i MQTT_PASSWORD
+docker compose pull      # gotowy obraz z ghcr.io/k4linsky/camaco_wms
+docker compose up -d
+```
+
+Bez dostępu do rejestru: `docker compose up -d --build` zbuduje obraz lokalnie.
+
+- Broker Mosquitto w kontenerze nie przyjmuje połączeń anonimowych. Login i hasło z `.env`
+  wpisz też w `secrets.h` urządzeń ESP32 (`MQTT_USER`, `MQTT_PASSWORD`).
+- Kontener nie wystartuje bez `MQTT_USER` i `MQTT_PASSWORD`.
+- Obraz multi-arch (`linux/amd64`, `linux/arm64`) buduje GitHub Actions
+  (`.github/workflows/docker-publish.yml`) po wypchnięciu na `main` lub tagu `v*`.
+  Pakiet w GHCR jest domyślnie prywatny: ustaw go jako publiczny albo zaloguj się `docker login ghcr.io`.
